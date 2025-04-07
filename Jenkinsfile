@@ -6,6 +6,11 @@ pipeline {
         gradle 'Gradle8'
     }
 
+     environment {
+        ANDROID_HOME = '/Users/meiqi.xiao/Library/Android/sdk'
+        PATH = "${ANDROID_HOME}/platform-tools:${PATH}"
+     }
+
     stages {
         stage('Checkout') {
             steps {
