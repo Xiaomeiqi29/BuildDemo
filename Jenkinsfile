@@ -6,11 +6,10 @@ pipeline {
         gradle 'Gradle8'
     }
 
-    environment {
-        JAVA_HOME = '/opt/java/openjdk'
-        ANDROID_HOME = '/opt/android-sdk'
-        PATH = "$JAVA_HOME/bin:$PATH"
-    }
+     environment {
+        ANDROID_HOME = '/Users/meiqi.xiao/Library/Android/sdk'
+        PATH = "${ANDROID_HOME}/platform-tools:${PATH}"
+     }
 
     stages {
         stage('Checkout') {
