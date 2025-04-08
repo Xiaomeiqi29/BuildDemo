@@ -11,6 +11,10 @@ pipeline {
         PATH = "${ANDROID_HOME}/platform-tools:${PATH}"
      }
 
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -20,18 +24,21 @@ pipeline {
 
         stage('Build') {
             steps {
+                echo "🛠️ 正在构建 APK..."
                 sh './gradlew clean assembleDebug'
             }
         }
 
         stage('Test') {
             steps {
-                sh './gradlew test'
+                echo "🧪 正在运行测试..."
+                sh './gradlew testDebugUnitTest'
             }
         }
 
         stage('Archive APK') {
             steps {
+                echo "📦 正在归档 APK..."
                 archiveArtifacts artifacts: '**/build/outputs/**/*.apk', fingerprint: true
             }
         }
@@ -39,11 +46,11 @@ pipeline {
 
     post {
         success {
-            echo 'Build completed successfully.'
+            echo '✅ Build completed successfully.'
         }
 
         failure {
-            echo 'Build failed.'
+            echo '❌ Build failed. Please check the logs.'
         }
     }
 }
