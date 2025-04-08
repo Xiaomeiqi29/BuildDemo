@@ -7,8 +7,8 @@ pipeline {
     }
 
     environment {
-        ANDROID_HOME = '/opt/android-sdk-linux'
-        PATH = "${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}"
+        JAVA_HOME = '/opt/java/openjdk'
+        PATH = "$JAVA_HOME/bin:$PATH"
     }
 
     stages {
