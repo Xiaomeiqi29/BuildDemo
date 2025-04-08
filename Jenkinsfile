@@ -8,6 +8,7 @@ pipeline {
 
     environment {
         JAVA_HOME = '/opt/java/openjdk'
+        ANDROID_HOME = '/opt/android-sdk'
         PATH = "$JAVA_HOME/bin:$PATH"
     }
 
